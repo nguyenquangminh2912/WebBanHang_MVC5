@@ -1,0 +1,25 @@
+﻿@model List<WebsiteBanHang.Models.SanPham>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GroupSanPham</title>
+</head>
+<body>
+   @foreach (var GroupSP in Model.GroupBy(n=>n.LoaiSanPham))
+   {
+       <div>@GroupSP.Key.TenLoai</div>
+       foreach (var item in GroupSP)
+       {
+           <p>@item.TenSP</p>
+
+       }
+
+   }
+</body>
+</html>

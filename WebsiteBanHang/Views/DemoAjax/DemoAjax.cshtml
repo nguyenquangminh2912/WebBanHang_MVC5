@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "Demo Ajax";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+<!DOCTYPE html>
+@*Xử dụng phương thức Actionlink*@
+<h1>Text Ajax bang phuong thuc ActionLink</h1>
+@Ajax.ActionLink(" Load Ajax MVC", "LoadAjaxOption", new AjaxOptions
+{
+
+    HttpMethod = "GET",
+    UpdateTargetId = "KetQua",
+    InsertionMode = InsertionMode.InsertAfter,
+    LoadingElementId = "loading"  
+
+})
+
+<div id="KetQua" style="height:150px">Đây là kết quả trả về</div>
+
+
+
+<h1>Test Ajax bằng phương thức BeginForm</h1>
+
+
+@*Xử dụng phương thức Ajax.BeinForm*@
+
+@using (
+            Ajax.BeginForm("LoadAjaxBeginForm", new AjaxOptions
+            {
+                HttpMethod = "Post",
+                UpdateTargetId = "KetQuaBeginForm",
+                InsertionMode = InsertionMode.Replace,
+                LoadingElementId = "loading"
+
+            })
+        )
+{
+    @Html.TextBox("txtTest");
+    <input type="submit" value="Submit" />
+}
+
+<div id="KetQuaBeginForm" style="height:150px">Đây là kết quả trả về cua Begin Form</div>
+
+@*Load Partial view Ajax*@
+
+<h1>Load DS pham</h1>
+@Ajax.ActionLink(" Load Ajax MVC", "LoadSanPhamAjax", new AjaxOptions
+{
+
+    HttpMethod = "GET",
+    UpdateTargetId = "KetQua",
+    InsertionMode = InsertionMode.Replace,
+    LoadingElementId = "divloading"
+
+})
+
+<div id="KetQua" style="height:150px">Đây là kết quả trả về</div>
+<div id="divloading" style="display:none">
+    <img src="~/Content/images/Loading.gif" />
+</div>
