@@ -130,12 +130,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\DemoAjaxController.cs" />
     <Compile Include="Controllers\DemoCssController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Controllers\LearnBootstrapController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\QuanLySanPhamController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -194,8 +196,43 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\AdminLayout\css\bootstrap.css" />
+    <Content Include="Content\AdminLayout\css\clndr.css" />
+    <Content Include="Content\AdminLayout\css\jqvmap.css" />
+    <Content Include="Content\AdminLayout\css\nav.css" />
+    <Content Include="Content\AdminLayout\css\style.css" />
+    <Content Include="Content\AdminLayout\images\ar2.png" />
+    <Content Include="Content\AdminLayout\images\arrows.png" />
+    <Content Include="Content\AdminLayout\images\avatar.jpg" />
+    <Content Include="Content\AdminLayout\images\avatar1.jpg" />
+    <Content Include="Content\AdminLayout\images\avatar2.jpg" />
+    <Content Include="Content\AdminLayout\images\img-sprite.png" />
+    <Content Include="Content\AdminLayout\images\into.png" />
+    <Content Include="Content\AdminLayout\images\into1.png" />
+    <Content Include="Content\AdminLayout\images\logo.png" />
+    <Content Include="Content\AdminLayout\images\pp.jpg" />
+    <Content Include="Content\AdminLayout\images\pp0.jpg" />
+    <Content Include="Content\AdminLayout\images\pp01.jpg" />
+    <Content Include="Content\AdminLayout\images\settings.png" />
+    <Content Include="Content\AdminLayout\images\tick-mark.png" />
+    <Content Include="Content\AdminLayout\js\Chart1.js" />
+    <Content Include="Content\AdminLayout\js\clndr.js" />
+    <Content Include="Content\AdminLayout\js\easyResponsiveTabs.js" />
+    <Content Include="Content\AdminLayout\js\jquery.easydropdown.js" />
+    <Content Include="Content\AdminLayout\js\jquery.min.js" />
+    <Content Include="Content\AdminLayout\js\jquery.nicescroll.js" />
+    <Content Include="Content\AdminLayout\js\jquery.vmap.js" />
+    <Content Include="Content\AdminLayout\js\jquery.vmap.sampledata.js" />
+    <Content Include="Content\AdminLayout\js\jquery.vmap.world.js" />
+    <Content Include="Content\AdminLayout\js\main.js" />
+    <Content Include="Content\AdminLayout\js\moment-2.2.1.js" />
+    <Content Include="Content\AdminLayout\js\site.js" />
+    <Content Include="Content\AdminLayout\js\underscore-min.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CssFont\css\font-awesome.css" />
+    <Content Include="Content\CssFont\css\font-awesome.min.css" />
+    <Content Include="Content\CssFont\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\flexslider.css" />
     <Content Include="Content\css\memenu.css" />
@@ -615,6 +652,39 @@
     <Content Include="Models\QLBanHangModel.edmx.diagram">
       <DependentUpon>QLBanHangModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\CssFont\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\CssFont\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\CssFont\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\CssFont\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\CssFont\fonts\FontAwesome.otf" />
+    <Content Include="Content\CssFont\less\animated.less" />
+    <Content Include="Content\CssFont\less\bordered-pulled.less" />
+    <Content Include="Content\CssFont\less\core.less" />
+    <Content Include="Content\CssFont\less\fixed-width.less" />
+    <Content Include="Content\CssFont\less\font-awesome.less" />
+    <Content Include="Content\CssFont\less\icons.less" />
+    <Content Include="Content\CssFont\less\larger.less" />
+    <Content Include="Content\CssFont\less\list.less" />
+    <Content Include="Content\CssFont\less\mixins.less" />
+    <Content Include="Content\CssFont\less\path.less" />
+    <Content Include="Content\CssFont\less\rotated-flipped.less" />
+    <Content Include="Content\CssFont\less\screen-reader.less" />
+    <Content Include="Content\CssFont\less\stacked.less" />
+    <Content Include="Content\CssFont\less\variables.less" />
+    <Content Include="Content\CssFont\scss\font-awesome.scss" />
+    <Content Include="Content\CssFont\scss\_animated.scss" />
+    <Content Include="Content\CssFont\scss\_bordered-pulled.scss" />
+    <Content Include="Content\CssFont\scss\_core.scss" />
+    <Content Include="Content\CssFont\scss\_fixed-width.scss" />
+    <Content Include="Content\CssFont\scss\_icons.scss" />
+    <Content Include="Content\CssFont\scss\_larger.scss" />
+    <Content Include="Content\CssFont\scss\_list.scss" />
+    <Content Include="Content\CssFont\scss\_mixins.scss" />
+    <Content Include="Content\CssFont\scss\_path.scss" />
+    <Content Include="Content\CssFont\scss\_rotated-flipped.scss" />
+    <Content Include="Content\CssFont\scss\_screen-reader.scss" />
+    <Content Include="Content\CssFont\scss\_stacked.scss" />
+    <Content Include="Content\CssFont\scss\_variables.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -648,6 +718,9 @@
     <Content Include="Views\DemoAjax\LoadSanPhamAjax.cshtml" />
     <Content Include="Views\SanPham\SanPhamStyle1Partial.cshtml" />
     <Content Include="Views\SanPham\SanPhamStyle2Partial.cshtml" />
+    <Content Include="Views\Layout\AdminLayout.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\QuanLySanPham\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
