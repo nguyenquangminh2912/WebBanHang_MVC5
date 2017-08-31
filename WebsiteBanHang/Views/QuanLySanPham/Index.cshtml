@@ -10,22 +10,25 @@
 
 @*Thể hiện dữ liệu từ control Webgrid vừa đăng ký*@
 @grid.GetHtml(
-    tableStyle:"divTable",
-    headerStyle:"gridHead",
-    footerStyle:"gridFooter",
-    rowStyle:"gridRow",
-    alternatingRowStyle:"gridAlterrow",
-    columns:grid.Columns(
-        grid.Column("MaSP","Mã sản phẩm"),
-        grid.Column("TenSP","Tên SP"),
+    tableStyle: "divTable",
+    headerStyle: "gridHead",
+    footerStyle: "gridFooter",
+    rowStyle: "gridRow",
+    alternatingRowStyle: "gridAlterrow",
+    columns: grid.Columns(
+        grid.Column("MaSP", "Mã sản phẩm"),
+        grid.Column("TenSP", "Tên SP"),
        @* grid.Column("MoTa", "Mô tả")*@
-       grid.Column("MoTa", "Description", format: p => @Html.Raw(p.MoTa)),
-       grid.Column("HinhAnh","Hình Ảnh", format:p=>Html.Raw("<img src=\"../Content/HinhAnhSP/"+p.HinhAnh+"\">"))
-        )
+       //grid.Column("MoTa", "Description", format: p => @Html.Raw(p.MoTa)),
+       grid.Column("HinhAnh", "Hình Ảnh", format: p => Html.Raw("<img width=\"100\" height=\"70\" src=\"../Content/HinhAnhSP/" + p.HinhAnh + "\">")),
+       grid.Column(format:p=> @Html.ActionLink("Chỉnh sửa", "ChinhSua", new { id=p.MaSP})),
+       grid.Column(format: p => @Html.ActionLink("Xóa", "Xoa", new { id = p.MaSP }))
+       )
     )
 <style>
 
     .divTable {
+        width:100%;
         border:1px solid #808080;
     }
     .gridHead {
