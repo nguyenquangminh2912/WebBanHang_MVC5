@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebsiteBanHang.Models;
@@ -78,6 +79,63 @@ namespace WebsiteBanHang.Controllers
             ViewBag.MaNSX = new SelectList(db.NhaSanXuats.OrderBy(n => n.TenNSX), "MaNSX", "TenNSX", sp.MaNSX);
 
             return View(sp);
+        }
+
+        [ValidateInput(false)]
+        [HttpPost]
+        public ActionResult ChinhSua(SanPham model)
+        {
+            ViewBag.MaNCC = new SelectList(db.NhaCungCaps.OrderBy(n => n.TenNCC), "MaNCC", "TenNCC", model.MaNCC);
+            ViewBag.MaLoaiSP = new SelectList(db.LoaiSanPhams.OrderBy(n => n.TenLoai), "MaLoaiSP", "TenLoai", model.MaLoaiSP);
+            ViewBag.MaNSX = new SelectList(db.NhaSanXuats.OrderBy(n => n.TenNSX), "MaNSX", "TenNSX", model.MaNSX);
+
+            if (ModelState.IsValid)
+            {
+                db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Xoa(int? id)
+        {
+
+            //Lấy sản phẩm cần chỉnh sửa dựa vào id
+            if (id == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            SanPham sp = db.SanPhams.SingleOrDefault(n => n.MaSP == id);
+            if (sp == null)
+            {
+                return HttpNotFound();
+            }
+
+            //Load dropdownlist nhà cung cấp và dropdownlist loại sp, mã nhà sản xuất
+            ViewBag.MaNCC = new SelectList(db.NhaCungCaps.OrderBy(n => n.TenNCC), "MaNCC", "TenNCC", sp.MaNCC);
+            ViewBag.MaLoaiSP = new SelectList(db.LoaiSanPhams.OrderBy(n => n.MaLoaiSP), "MaLoaiSP", "TenLoai", sp.MaLoaiSP);
+            ViewBag.MaNSX = new SelectList(db.NhaSanXuats.OrderBy(n => n.MaNSX), "MaNSX", "TenNSX", sp.MaNSX);
+            return View(sp);
+        }
+
+        [HttpPost]
+        public ActionResult Xoa(int id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            SanPham model = db.SanPhams.SingleOrDefault(n => n.MaSP == id);
+            if (model == null)
+            {
+                return HttpNotFound();
+            }
+            db.SanPhams.Remove(model);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

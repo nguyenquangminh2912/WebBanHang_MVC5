@@ -806,6 +806,7 @@
     <Content Include="Views\QuanLySanPham\Index.cshtml" />
     <Content Include="Views\QuanLySanPham\TaoMoi.cshtml" />
     <Content Include="Views\QuanLySanPham\ChinhSua.cshtml" />
+    <Content Include="Views\QuanLySanPham\Xoa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

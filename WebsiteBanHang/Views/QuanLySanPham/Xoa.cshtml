@@ -1,7 +1,7 @@
 ﻿@model WebsiteBanHang.Models.SanPham
 
 @{
-    ViewBag.Title = "Chỉnh sửa";
+    ViewBag.Title = "Xóa sản phẩm";
     Layout = "~/Views/Layout/AdminLayout.cshtml";
 }
 
@@ -21,12 +21,12 @@
   } );
 </script>
 
-<h2>Chinh sửa sản phẩm</h2>
+<h2>Xóa sản phẩm</h2>
 
-@using (Html.BeginForm("ChinhSua", "QuanLySanPham", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Xoa", "QuanLySanPham", FormMethod.Post, new { @enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-   
+
 
     <div class="form-horizontal">
         <h4>Chỉnh sửa sản phẩm</h4>
@@ -61,9 +61,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.NgayCapNhap, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @if(Model.NgayCapNhap!=null)
-                { 
-                    @Html.TextBox("NgayCapNhap", Model.NgayCapNhap.Value.ToString("dd/MM/yyyy"), new { id = "datepicker", @class="date" })
+                @if (Model.NgayCapNhap != null)
+                {
+                    @Html.TextBox("NgayCapNhap", Model.NgayCapNhap.Value.ToString("dd/MM/yyyy"), new { id = "datepicker", @class = "date" })
                     @Html.ValidationMessageFor(model => model.NgayCapNhap, "", new { @class = "text-danger" })
                 }
             </div>
@@ -90,7 +90,7 @@
             <div class="col-md-10">
                 <input type="file" name="HinhAnh" />
                 <span style="color:rebeccapurple">@ViewBag.Upload</span>
-                <br/>
+                <br />
                 <img src="@Url.Content("~/Content/HinhAnhSP/"+Model.HinhAnh)" width="150" height="80" />
             </div>
         </div>
@@ -209,7 +209,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Update" class="btn btn-success"/>
+                <input type="submit" value="Xoa" class="btn btn-danger" />
             </div>
         </div>
     </div>
